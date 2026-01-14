@@ -18,7 +18,7 @@ namespace Fractional
             numerator = num;
             denominator = denom;
 
-            var gcd = GreatestCommonDenominator(numerator, denominator);
+            var gcd = GreatestCommonDevisor(numerator, denominator);
             numerator /= gcd;
             denominator /= gcd;
         }
@@ -46,12 +46,12 @@ namespace Fractional
 
         public override int GetHashCode() => HashCode.Combine(numerator, denominator);
 
-        static int GreatestCommonDenominator(int a, int b)
+        static int GreatestCommonDevisor(int a, int b)
         {
             if (b == 0)
                 return Math.Abs(a);
             else
-                return GreatestCommonDenominator(b, a % b);
+                return GreatestCommonDevisor(b, a % b);
         }
     }
 }
